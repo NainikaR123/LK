@@ -6,7 +6,38 @@
     struct Node *next;
 };
 
- void printList(Node* head) 
-void deleteNode(Node** head, int key) 
-int main() 
+void printList(Node* head) 
+{
+    Node* x= head;
+    while (x != NULL)
+{
+        printf("%d ", x->data);
+        x = x->next;
+    }
+    printf("\n");
+}
 
+ 
+void deleteNode(Node** head, int key) 
+{
+    Node *x = *head, *prev;
+ if (x != NULL && x->data == key) 
+{
+        *head = x->next;
+        free(x);
+        return;
+    }
+
+     
+    while (x!= NULL && x->data != key)
+{
+        prev = x;
+        x = x->next;
+    }
+    if (x == NULL)
+        return;
+    prev->next = x->next;
+    free(x);
+}
+
+ 
